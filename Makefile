@@ -4,9 +4,17 @@ IMG = hello-selenium
 build:
 	docker build -t $(IMG) .
 
-.PHONY: run
-run:
-	docker run --rm -it \
+.PHONY: test
+test:
+	docker run --rm \
 		--shm-size=2g \
 		$(IMG) \
 		mvn test
+
+.PHONY: bash
+bash:
+	docker run --rm -it \
+		--shm-size=2g \
+		$(IMG) \
+		bash
+
